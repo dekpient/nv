@@ -34,6 +34,8 @@
 extern NSString *SimplenoteServiceName;
 extern NSString *SimplenoteSeparatorKey;
 
+extern NSString * const kSimperiumAPIKey;
+
 @interface SimplenoteSession : NSObject <SyncServiceSession, NSCopying> {
 
 	NSString *emailAddress, *password, *simperiumToken;
@@ -73,7 +75,7 @@ extern NSString *SimplenoteSeparatorKey;
 + (NSString*)localizedServiceTitle;
 + (NSString*)serviceName;
 + (NSString*)nameOfKeyElement;
-+ (NSURL*)servletURLWithPath:(NSString*)path parameters:(NSDictionary*)params;
++ (NSURL*)authURLWithPath:(NSString*)path parameters:(NSDictionary*)params;
 + (NSURL*)simperiumURLWithPath:(NSString*)path parameters:(NSDictionary*)params;
 + (SCNetworkReachabilityRef)createReachabilityRefWithCallback:(SCNetworkReachabilityCallBack)callout target:(id)aTarget;
 //+ (NSString*)localizedNetworkDiagnosticMessage;
