@@ -36,29 +36,22 @@
 }
 
 
-- (id)initWithURL:(NSURL*)aURL bodyStringAsUTF8B64:(NSString*)stringToEncode delegate:(id)aDelegate {
-	NSData *B64Data = nil;
-	if (stringToEncode) {
-		NSString *B64String = [[stringToEncode dataUsingEncoding:NSUTF8StringEncoding] encodeBase64WithNewlines:NO];
-		if (!(B64Data = [B64String dataUsingEncoding:NSASCIIStringEncoding])) {
-			return nil;
-		}
-	}
-	
-	return [self initWithURL:aURL POSTData:B64Data delegate:aDelegate];
-}
+- (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData headers:(NSDictionary *)aHeaders delegate:(id)aDelegate {
+	return [self initWithURL:aURL POSTData:POSTData headers:aHeaders contentType:nil delegate:aDelegate];
+ }
 
-- (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData delegate:(id)aDelegate {
-	return [self initWithURL:aURL POSTData:POSTData contentType:nil delegate:aDelegate];
-}
+ - (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData delegate:(id)aDelegate {
+	return [self initWithURL:aURL POSTData:POSTData headers:nil contentType:nil delegate:aDelegate];
+ }
 
-- (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData contentType:(NSString*)contentType delegate:(id)aDelegate {
+ - (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData headers:(NSDictionary *)aHeaders contentType:(NSString*)contentType delegate:(id)aDelegate {
 	if ([self init]) {
 		receivedData = [[NSMutableData alloc] init];
 		requestURL = [aURL retain];
 		delegate = aDelegate;
 		dataToSend = [POSTData retain];
 		dataToSendContentType = [contentType copy];
+		requestHeaders = [aHeaders retain];
 	}
 	return self;
 }
@@ -94,6 +87,12 @@
 	
 	[request setHTTPShouldHandleCookies:NO];
 	[request addValue:@"Sinus cardinalis NV 2.0B5" forHTTPHeaderField:@"User-agent"];
+	
+	if (requestHeaders) {
+		for (NSString *field in [requestHeaders allKeys]) {
+			[request addValue:[requestHeaders objectForKey:field] forHTTPHeaderField:field];
+		}
+	}
 	
 	//if POSTData is nil, do a plain GET request
 	if (dataToSend) {
@@ -215,8 +214,8 @@
 	
 	lastStatusCode = 0;
 	BOOL responseValid = [response isKindOfClass:[NSHTTPURLResponse class]];
-	if (!responseValid || (lastStatusCode = [(NSHTTPURLResponse*)response statusCode]) != 200) {
-		
+	lastStatusCode = [(NSHTTPURLResponse*)response statusCode];
+	if (!responseValid) {
 		[urlConnection cancel];
 		[self _fetchDidFinishWithError:[NSHTTPURLResponse localizedStringForStatusCode:lastStatusCode]];
 	} else if (responseValid) {

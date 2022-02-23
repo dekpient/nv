@@ -34,6 +34,7 @@
 	NSURLConnection *urlConnection;
 	NSURL *requestURL;
 	NSDictionary *headers;
+	NSDictionary *requestHeaders;
 	id representedObject;
 	
 	NSString *lastErrorMessage;
@@ -45,8 +46,9 @@
 }
 
 - (id)initWithURL:(NSURL*)aURL bodyStringAsUTF8B64:(NSString*)stringToEncode delegate:(id)aDelegate;
+- (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData headers:(NSDictionary *)aHeaders delegate:(id)aDelegate;
 - (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData delegate:(id)aDelegate;
-- (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData contentType:(NSString*)contentType delegate:(id)aDelegate;
+- (id)initWithURL:(NSURL*)aURL POSTData:(NSData*)POSTData headers:(NSDictionary *)aHeaders contentType:(NSString*)contentType delegate:(id)aDelegate;
 - (void)setRepresentedObject:(id)anObject;
 - (id)representedObject;
 - (NSInvocation*)successInvocation;

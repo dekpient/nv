@@ -33,7 +33,7 @@
 	NSArray *entriesToCollect;
 	NSMutableArray *entriesCollected, *entriesInError;
 	NSUInteger entryFinishedCount;
-	NSString *authToken, *email;
+	NSString *simperiumToken;
 	SEL entriesFinishedCallback;
 	id collectionDelegate;
 	BOOL stopped;
@@ -42,7 +42,7 @@
 	id representedObject;
 }
 
-- (id)initWithEntriesToCollect:(NSArray*)wantedEntries authToken:(NSString*)anAuthToken email:(NSString*)anEmail;
+- (id)initWithEntriesToCollect:(NSArray*)wantedEntries simperiumToken:(NSString*)aSimperiumToken;
 
 - (NSArray*)entriesToCollect;
 - (NSArray*)entriesCollected;
@@ -71,7 +71,7 @@
 }
 
 
-- (id)initWithEntries:(NSArray*)wantedEntries operation:(SEL)opSEL authToken:(NSString*)anAuthToken email:(NSString*)anEmail;
+- (id)initWithEntries:(NSArray*)wantedEntries operation:(SEL)opSEL simperiumToken:(NSString*)aSimperiumToken;
 
 - (SyncResponseFetcher*)_fetcherForNote:(NoteObject*)aNote creator:(BOOL)doesCreate;
 - (SyncResponseFetcher*)fetcherForCreatingNote:(NoteObject*)aNote;
