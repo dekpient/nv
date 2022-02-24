@@ -61,8 +61,8 @@
 		NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
 		[appleEventManager setEventHandler:self andSelector:@selector(handleGetURLEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];	
 		
-		dividerShader = [[LinearDividerShader alloc] initWithStartColor:[NSColor colorWithCalibratedWhite:0.988 alpha:1.0] 
-															   endColor:[NSColor colorWithCalibratedWhite:0.875 alpha:1.0]];
+		dividerShader = [[LinearDividerShader alloc] initWithStartColor:[NSColor colorWithCalibratedWhite:0.3 alpha:1.0]
+															   endColor:[NSColor colorWithCalibratedWhite:0.25 alpha:1.0]];
 		
 		isCreatingANote = isFilteringFromTyping = typedStringIsCached = NO;
 		typedString = @"";
@@ -471,8 +471,8 @@ terminateApp:
 	
 	if (!verticalDividerImg && [splitView divider]) verticalDividerImg = [[splitView divider] retain];
 	[splitView setDivider: horiz ? nil : verticalDividerImg];
-	[splitView setDividerThickness: horiz ? 0.0 : 8.0];
-	
+	[splitView setDividerThickness: horiz ? 0.0 : 3.0];
+
 	[[notesTableView enclosingScrollView] setBorderType: horiz ? NSNoBorder : NSBezelBorder];
 	
 	NSSize size = [[splitView subviewAtPosition:0] frame].size;

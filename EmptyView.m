@@ -63,8 +63,8 @@
 
 - (void)drawRect:(NSRect)rect {
 	NSRect bounds = [self bounds];
-	
-	[[NSColor whiteColor] set];
+
+	[[NSColor darkGrayColor] set];
     NSRectFill(bounds);
 	
 	[[NSColor lightGrayColor] set];

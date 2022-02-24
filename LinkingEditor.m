@@ -233,8 +233,8 @@ CGFloat _perceptualColorDifference(NSColor*a, NSColor*b) {
 	[fgColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
 
 	//if foreground color is too dark for hue changes to matter, then just use blue
-	if (brightness <= 0.24)
-		return [NSColor blueColor];
+	if (brightness == 1)
+		return [NSColor systemTealColor];
 	
 	brightness = _perceptualDarkness(bgColor) > 0.5 ? MAX(0.75, brightness) : MIN(0.35, brightness);
 	

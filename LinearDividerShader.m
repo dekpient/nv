@@ -38,8 +38,6 @@ static void ColorBlendFunction(void *info, const CGFloat *in, CGFloat *out);
 		static const CGFunctionCallbacks cgFunctionCallbacks = { 0, &ColorBlendFunction, nil };
 		
 		axialShadingFunction = CGFunctionCreate(&colors, 1, validIntervals, 4, validIntervals, &cgFunctionCallbacks);
-		
-		dimpleImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForImageResource:@"SplitViewDimple.tif"]];
     }
 
     return self;
@@ -49,7 +47,6 @@ static void ColorBlendFunction(void *info, const CGFloat *in, CGFloat *out);
 
 	CGFunctionRelease(axialShadingFunction);
 	CGColorSpaceRelease(colorSpaceRef);
-	[dimpleImage release];
 	
 	[super dealloc];
 }
@@ -62,10 +59,6 @@ static void ColorBlendFunction(void *info, const CGFloat *in, CGFloat *out);
 	CGContextDrawShading((CGContextRef)[[NSGraphicsContext currentContext] graphicsPort], cgShading);
 	
 	CGShadingRelease(cgShading);
-	
-	if (!NSIsEmptyRect(dimpleRect)) {
-		[dimpleImage drawCenteredInRect:dimpleRect];
-	}
 }
 
 @end

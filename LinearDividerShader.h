@@ -38,7 +38,6 @@ NSRect centeredRectInRect(NSRect rect, NSSize size);
 	CGFunctionRef axialShadingFunction;
 	
 	ColorSet colors;
-	NSImage *dimpleImage;
 }
 
 - (id)initWithStartColor:(NSColor*)start endColor:(NSColor*)end;
