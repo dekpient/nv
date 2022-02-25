@@ -11,12 +11,10 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string>net.brockerhoff.RBSplitView.IBPlugin</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>851</string>
-				<string>1.2</string>
 			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
@@ -29,7 +27,6 @@
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>net.brockerhoff.RBSplitView.IBPlugin</string>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
@@ -64,12 +61,12 @@
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="RBSplitView" id="450798940">
+						<object class="NSView" id="450798940">
 							<reference key="NSNextResponder" ref="92063295"/>
 							<int key="NSvFlags">18</int>
 							<object class="NSMutableArray" key="NSSubviews">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<object class="RBSplitSubview" id="258615800">
+								<object class="NSView" id="258615800">
 									<reference key="NSNextResponder" ref="450798940"/>
 									<object class="NSMutableArray" key="NSSubviews">
 										<bool key="EncodedWithXMLCoder">YES</bool>
@@ -202,7 +199,7 @@
 									<double key="fraction">0.3355255126953125</double>
 									<bool key="canCollapse">NO</bool>
 								</object>
-								<object class="RBSplitSubview" id="807960872">
+								<object class="NSView" id="807960872">
 									<reference key="NSNextResponder" ref="450798940"/>
 									<object class="NSMutableArray" key="NSSubviews">
 										<bool key="EncodedWithXMLCoder">YES</bool>
